@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/locationFragment">
+
+    <fragment
+        android:id="@+id/informationFragment"
+        android:name="com.tods.mapchallenge.ui.information.InformationFragment"
+        android:label="InformationFragment"
+        tools:layout="@layout/fragment_information">
+        <argument
+            android:name="latLon"
+            app:argType="com.tods.mapchallenge.data.model.CoordModel" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.tods.mapchallenge.ui.location.LocationFragment"
+        android:label="LocationFragment"
+        tools:layout="@layout/fragment_location"
+        >
+        <action
+            android:id="@+id/action_locationFragment_to_informationFragment"
+            app:destination="@id/informationFragment" />
+        <action
+            android:id="@+id/action_locationFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.tods.mapchallenge.ui.map.MapFragment"
+        android:label="MapFragment"
+        tools:layout="@layout/fragment_map"
+        >
+        <argument
+            android:name="latLon"
+            app:nullable="true"
+            android:defaultValue="@null"
+            app:argType="com.tods.mapchallenge.data.model.CoordModel" />
+    </fragment>
+</navigation>
