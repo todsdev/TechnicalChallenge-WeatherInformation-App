@@ -2,11 +2,11 @@ package com.tods.mapchallenge.ui.information
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -41,7 +41,7 @@ class InformationFragment: BaseFragment<FragmentInformationBinding, InformationV
     }
 
     private fun configInitialSettings() {
-        model = args.latLon!!
+        model = args.latLon
         viewModel.fetch(model.lat, model.lon)
     }
 
@@ -67,8 +67,8 @@ class InformationFragment: BaseFragment<FragmentInformationBinding, InformationV
                     }
                 }
                 is ResourceState.Error -> {
+                    binding.progressBarInformation.hide()
                     result.message?.let { message ->
-                        binding.progressBarInformation.hide()
                         toast(getString(R.string.failed))
                         Timber.tag("InformationFragment").e(message)
                     }
@@ -79,5 +79,25 @@ class InformationFragment: BaseFragment<FragmentInformationBinding, InformationV
                 else -> { }
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_map, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.openMapFragment -> {
+                val action = InformationFragmentDirections.actionInformationFragmentToMapFragment(model)
+                findNavController().navigate(action)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
     }
 }

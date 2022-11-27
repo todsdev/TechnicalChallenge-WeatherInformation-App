@@ -7,9 +7,4 @@
         android:id="@+id/locationFragment"
         android:title="@string/location"/>
 
-
-    <item
-        android:icon="@drawable/ic_map_24"
-        android:id="@+id/mapFragment"
-        android:title="@string/map"/>
 </menu>

@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">M A P</string>
+    <string name="app_name">Weather Information</string>
     <string name="location">Location</string>
     <string name="information">Information</string>
     <string name="map">Map</string>
@@ -33,4 +33,6 @@
     <string name="select_first">Select a location first</string>
     <string name="failed_to_recover_location">Failed to recover your current location</string>
     <string name="in_order_to">In order to use this function, please share your GPS location</string>
+    <string name="button_only">Search button is only valid for button options</string>
+    <string name="open_map">Check on map</string>
 </resources>

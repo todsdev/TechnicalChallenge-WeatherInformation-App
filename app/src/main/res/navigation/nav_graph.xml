@@ -14,6 +14,9 @@
         <argument
             android:name="latLon"
             app:argType="com.tods.mapchallenge.data.model.CoordModel" />
+        <action
+            android:id="@+id/action_informationFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
 
     <fragment
@@ -25,10 +28,8 @@
         <action
             android:id="@+id/action_locationFragment_to_informationFragment"
             app:destination="@id/informationFragment" />
-        <action
-            android:id="@+id/action_locationFragment_to_mapFragment"
-            app:destination="@id/mapFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.tods.mapchallenge.ui.map.MapFragment"
@@ -37,8 +38,6 @@
         >
         <argument
             android:name="latLon"
-            app:nullable="true"
-            android:defaultValue="@null"
             app:argType="com.tods.mapchallenge.data.model.CoordModel" />
     </fragment>
 </navigation>
