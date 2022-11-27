@@ -7,6 +7,7 @@ import com.tods.mapchallenge.repository.WeatherRepository
 import com.tods.mapchallenge.state.ResourceState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.io.IOException

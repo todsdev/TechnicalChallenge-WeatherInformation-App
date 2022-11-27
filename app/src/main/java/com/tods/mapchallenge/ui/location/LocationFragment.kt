@@ -200,7 +200,7 @@ class LocationFragment: BaseFragment<FragmentLocationBinding, LocationViewModel>
         editSearch.editableText.toString().let { query ->
             if (query.isNotEmpty()) {
                 val latLon = recoverLocationFromAddress(query)
-                searchQuery(latLon!!.lat, latLon.lon)
+                radioButtonFunction(latLon)
             }
         }
     }
