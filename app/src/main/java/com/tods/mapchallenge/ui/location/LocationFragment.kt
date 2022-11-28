@@ -162,9 +162,13 @@ class LocationFragment: BaseFragment<FragmentLocationBinding, LocationViewModel>
         val addressList: List<Address>
         var latLon: CoordModel? = null
         try {
-            addressList = geocoder.getFromLocationName(address, 1)
-            val location: Address = addressList[0]
-            latLon = CoordModel(location.longitude.toFloat(), location.latitude.toFloat())
+            addressList = geocoder.getFromLocationName(address, 5)
+            latLon = if (addressList.isEmpty()) {
+                Constants.DEFAULT_LATLONG
+            } else {
+                val location: Address = addressList[0]
+                CoordModel(location.longitude.toFloat(), location.latitude.toFloat())
+            }
         } catch (e: IOException) {
             Timber.tag("RecoverLocation").e(e)
         }

@@ -20,11 +20,11 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editTextSearch"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/location_fragment_text_input_width"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/location_fragment_margin"
+        android:layout_marginTop="@dimen/location_fragment_margin"
+        android:layout_marginEnd="@dimen/location_fragment_margin"
         android:hint="@string/city_research"
         app:boxStrokeColor="@color/black"
         app:hintTextColor="@color/black"
@@ -44,8 +44,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
+        android:layout_height="@dimen/location_fragment_scroll_view_height"
+        android:layout_marginBottom="@dimen/location_fragment_margin"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/buttonSearch"
         app:layout_constraintEnd_toEndOf="parent"
@@ -124,16 +124,14 @@
         </RadioGroup>
     </ScrollView>
 
-
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="@dimen/location_fragment_margin"
+        android:layout_marginTop="@dimen/location_fragment_margin"
         android:text="@string/select_a_city_example"
-        android:textSize="18sp"
+        android:textSize="@dimen/location_fragment_text_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextSearch" />
 
@@ -141,9 +139,9 @@
         android:id="@+id/buttonSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="@dimen/location_fragment_margin"
+        android:layout_marginEnd="@dimen/location_fragment_margin"
+        android:layout_marginBottom="@dimen/location_fragment_margin"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:background="@color/black"
         android:text="@string/search"

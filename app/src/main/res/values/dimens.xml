@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_0dp">0dp</dimen>
+    <dimen name="size_1dp">1dp</dimen>
+    <dimen name="size_16dp">16dp</dimen>
+    <dimen name="size_16sp">16sp</dimen>
+    <dimen name="size_18sp">18sp</dimen>
+    <dimen name="size_24dp">24dp</dimen>
+    <dimen name="size_50dp">50dp</dimen>
+    <dimen name="size_100dp">100dp</dimen>
+
+    <dimen name="location_fragment_margin">@dimen/size_16dp</dimen>
+    <dimen name="location_fragment_text_input_width">@dimen/size_0dp</dimen>
+    <dimen name="location_fragment_scroll_view_height">@dimen/size_0dp</dimen>
+    <dimen name="location_fragment_text_size">@dimen/size_18sp</dimen>
+
+    <dimen name="information_fragment_progress_bar_elevation">@dimen/size_1dp</dimen>
+    <dimen name="information_fragment_text_title_height">@dimen/size_50dp</dimen>
+    <dimen name="information_fragment_text_title_width">@dimen/size_100dp</dimen>
+    <dimen name="information_fragment_text_title_text_size">@dimen/size_16sp</dimen>
+    <dimen name="information_fragment_margin">@dimen/size_16dp</dimen>
+    <dimen name="information_fragment_text_result_width">@dimen/size_0dp</dimen>
+    <dimen name="information_fragment_text_result_height">@dimen/size_50dp</dimen>
+
+    <dimen name="main_activity_frame_height">@dimen/size_0dp</dimen>
+
+    <dimen name="icon_size">@dimen/size_24dp</dimen>
+</resources>
