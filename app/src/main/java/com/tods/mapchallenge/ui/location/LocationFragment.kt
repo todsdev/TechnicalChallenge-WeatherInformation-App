@@ -56,16 +56,24 @@ class LocationFragment: BaseFragment<FragmentLocationBinding, LocationViewModel>
         super.onViewCreated(view, savedInstanceState)
         configQuerySearch(savedInstanceState)
         configButtonSearchClickListener()
-        configRequestPermission()
+        configInitialSettings()
+    }
+
+    private fun configInitialSettings() {
         fusedLocation = LocationServices.getFusedLocationProviderClient(requireContext())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE)?: return
-        val value = sharedPreferences.getInt(getString(R.string.readed_how_to_use), Constants.DEFAULT_VALUE)
+        configSharedPreferences()
+    }
+
+    private fun configSharedPreferences() {
+        sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE) ?: return
+        val value =
+            sharedPreferences.getInt(getString(R.string.readed_how_to_use), Constants.DEFAULT_VALUE)
         if (value == Constants.DEFAULT_VALUE) {
-            sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE)?: return
+            sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE) ?: return
             with(sharedPreferences.edit()) {
                 putInt(getString(R.string.readed_how_to_use), Constants.UPDATED_VALUE)
                 apply()
@@ -149,6 +157,7 @@ class LocationFragment: BaseFragment<FragmentLocationBinding, LocationViewModel>
                         radioButtonFunction(recoveredLatLon)
                     }
                     R.id.button_current -> {
+                        configRequestPermission()
                         var latLon: CoordModel?
                         checkPermission()
                         fusedLocation.lastLocation.addOnSuccessListener { location ->
