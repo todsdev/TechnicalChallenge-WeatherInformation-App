@@ -2,6 +2,7 @@ package com.tods.mapchallenge.ui.location
 
 import android.Manifest
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.*
 import android.location.LocationListener
@@ -22,6 +23,7 @@ import com.google.android.gms.location.*
 import com.google.android.gms.tasks.CancellationToken
 import com.google.android.gms.tasks.CancellationTokenSource
 import com.google.android.gms.tasks.OnTokenCanceledListener
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.tods.mapchallenge.R
 import com.tods.mapchallenge.data.model.CoordModel
 import com.tods.mapchallenge.databinding.FragmentLocationBinding
@@ -40,6 +42,7 @@ class LocationFragment: BaseFragment<FragmentLocationBinding, LocationViewModel>
     override fun recoverViewBinding(inflater: LayoutInflater, container: ViewGroup?):
             FragmentLocationBinding = FragmentLocationBinding.inflate(inflater, container, false)
     private lateinit var fusedLocation: FusedLocationProviderClient
+    private lateinit var sharedPreferences: SharedPreferences
     private var permission: ActivityResultLauncher<String> = registerForActivityResult(
         ActivityResultContracts.RequestPermission()){ isGranted: Boolean ->
         if (isGranted){
@@ -55,6 +58,33 @@ class LocationFragment: BaseFragment<FragmentLocationBinding, LocationViewModel>
         configButtonSearchClickListener()
         configRequestPermission()
         fusedLocation = LocationServices.getFusedLocationProviderClient(requireContext())
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE)?: return
+        val value = sharedPreferences.getInt(getString(R.string.readed_how_to_use), Constants.DEFAULT_VALUE)
+        if (value == Constants.DEFAULT_VALUE) {
+            sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE)?: return
+            with(sharedPreferences.edit()) {
+                putInt(getString(R.string.readed_how_to_use), Constants.UPDATED_VALUE)
+                apply()
+            }
+            configOneTimeDialog()
+        }
+    }
+
+    private fun configOneTimeDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("HOW TO USE")
+            .setMessage(
+                "There is two different ways to recover the location you want:\n" +
+                        "First is use the text address with enter/keyboard function to push the information and \n" +
+                        "Second is using the pre selected locations with the 'Search' button"
+            )
+            .setPositiveButton(getString(R.string.understood)) { dialog, _ ->
+                dialog.dismiss()
+            }.show()
     }
 
     private fun configRequestPermission() {

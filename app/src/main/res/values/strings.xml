@@ -35,4 +35,6 @@
     <string name="in_order_to">In order to use this function, please share your GPS location</string>
     <string name="button_only">Search button is only valid for button options</string>
     <string name="open_map">Check on map</string>
+    <string name="readed_how_to_use">HOW_TO_USE</string>
+    <string name="understood">Understood</string>
 </resources>
